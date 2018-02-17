@@ -12,7 +12,7 @@ On the security function set your security credential value as specified within 
     
 `let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");`
 
-_Note:_** If using on production comment sandbox URL and uncomment production URL, set to sandbox initially.
+**_Note:_** If using on production comment sandbox URL and uncomment production URL, set to sandbox initially.
 
 **Usage**
 
