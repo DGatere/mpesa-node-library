@@ -18,11 +18,11 @@ B2C Request
 This initiates a business to customer transactions from a company (short code) to end users (mobile numbers) of their services.
 
 B2C(initiatorName, commandId, amount, partyA, partyB, remarks, queueUrl, resultUrl, occasion)
-Example: mpesa.B2C('testapi', 'BusinessPayment', '100', '600133', '254708374149', 'test', 'http://randomurl.com','http://randomurl2.com');
+Example: mpesa.B2C('testapi', 'BusinessPayment', '100', '600133', '254708374149', 'test', 'http://randomurl.com', 'http://randomurl2.com');
 
 B2B Request
 
 This initiates a business to business transaction between one company to another.
 
 B2B(initiator, commandId, senderId, receiverId, amount, partyA, partyB, accountRef, remarks, queueUrl, resultUrl, occasion)
-Example: mpesa.B2B('testapi', 'BusinessPayBill', '4', '4', '1000', '600133', '600000', 'BusinessA', 'test', 'http://randomurl.com','http://randomurl2.com', 'test');
+Example: mpesa.B2B('testapi', 'BusinessPayBill', '4', '4', '1000', '600133', '600000', 'BusinessA', 'test', 'http://randomurl.com', 'http://randomurl2.com', 'test');
