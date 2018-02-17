@@ -18,10 +18,19 @@ On the security function set your security credential value as specified within 
 This initiates a business to customer transactions from a company (short code) to end users (mobile numbers) of their services.
 
 B2C(initiatorName, commandId, amount, partyA, partyB, remarks, queueUrl, resultUrl, occasion)<br>
-Example: `mpesa.B2C('testapi', 'BusinessPayment', '100', '600133', '254708374149', 'test', 'http://randomurl.com', 'http://randomurl2.com');`
+_Example:_ `mpesa.B2C('testapi', 'BusinessPayment', '100', '600133', '254708374149', 'test', 'http://randomurl.com', 'http://randomurl2.com');`
 
 **B2B Request**
 
-This initiates a business to business transaction between one company to another.<br>
+This initiates a business to business transaction between one company to another.
+
 B2B(initiator, commandId, senderId, receiverId, amount, partyA, partyB, accountRef, remarks, queueUrl, resultUrl, occasion)<br>
-Example: `mpesa.B2B('testapi', 'BusinessPayBill', '4', '4', '1000', '600133', '600000', 'BusinessA', 'test', 'http://randomurl.com','http://randomurl2.com', 'test');`
+_Example:_ `mpesa.B2B('testapi', 'BusinessPayBill', '4', '4', '1000', '600133', '600000', 'BusinessA', 'test', 'http://randomurl.com','http://randomurl2.com', 'test');`
+
+[**C2B Register**](https://developer.safaricom.co.ke/c2b/apis/post/registerurl)
+
+This initiates a C2B confirmation and validation registration for a company's URLs
+
+C2B_Register(shortCode, responseType, confirmationUrl, validationUrl)
+_Example:_ `mpesa.C2B_Register('600133', 'Completed', 'http://randomurl.com','http://randomurl2.com');`
+
