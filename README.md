@@ -6,6 +6,7 @@ This package is intended to assist Node.js developers to use the M-Pesa API.
 Before using the transaction API set the consumer key and consumer secret from My Apps > Select App > copy Consumer Key and Consumer Secret and paste within quotes:
 
 const consumer_key = 'INSERT CONSUMER KEY HERE';
+
 const consumer_secret = 'INSERT CONSUMER SECRET HERE';
 
 On the security function set your security credential value as specified within quotes:
