@@ -9,7 +9,8 @@ Before using the transaction API set the consumer key and consumer secret from <
     const consumer_secret = 'INSERT CONSUMER SECRET HERE';
 
 On the security function set your security credential value as specified within quotes:<br>
-    let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");
+    
+```let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");```
 
 **Note:
 
