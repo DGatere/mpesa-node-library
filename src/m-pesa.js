@@ -13,7 +13,7 @@ let mpesa = {
         const auth = "Basic " + new Buffer(consumer_key + ":" + consumer_secret).toString("base64");
 
         let options = {
-            //uri for production = https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials
+            //uri: "https://api.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
             uri: "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials",
             headers: {
                 "Authorization": auth
@@ -24,8 +24,8 @@ let mpesa = {
         return rp(options);
     },
     security() {
-        //sandbox value = Security Credential (Shortcode 1)
-        //production value = api initiator password
+        //sandbox value for security credential = Security Credential (Shortcode 1)
+        //production value for security credential = api initiator password
         let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");
         //read the sandbox/production certificate data
         // PATH - e.g "./keys/sandbox-cert.cer"
@@ -46,11 +46,11 @@ let mpesa = {
         //invoke oauth function in a promise to ensure token is returned before next function is run
         this.O_Auth().then(response => {
             let security_credential = this.security();
-            //returned token from function call access the access_token value and store
+            //returned token from function call accesses the access_token value and stores it
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/b2c/v1/paymentrequest'
+                //uri: 'https://api.safaricom.co.ke/mpesa/b2c/v1/paymentrequest',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/b2c/v1/paymentrequest',
                 headers: {
                     "Authorization": "Bearer " + accessToken,
@@ -85,7 +85,7 @@ let mpesa = {
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/b2b/v1/paymentrequest'
+                //uri: 'https://api.safaricom.co.ke/mpesa/b2b/v1/paymentrequest',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/b2b/v1/paymentrequest',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -123,7 +123,7 @@ let mpesa = {
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl'
+                //uri: 'https://api.safaricom.co.ke/mpesa/c2b/v1/registerurl',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/registerurl',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -154,7 +154,7 @@ let mpesa = {
             let token = accessToken;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/c2b/v1/simulate'
+                //uri: 'https://api.safaricom.co.ke/mpesa/c2b/v1/simulate',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -188,7 +188,7 @@ let mpesa = {
             let password = new Buffer(short_code + pass_key + time_stamp).toString("base64");
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+                //uri: 'https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -228,7 +228,7 @@ let mpesa = {
             let password = new Buffer(short_code + pass_key + time_stamp).toString("base64");
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/stkpushquery/v1/query'
+                //uri: 'https://api.safaricom.co.ke/mpesa/stkpushquery/v1/query',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -258,7 +258,7 @@ let mpesa = {
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/reversal/v1/request'
+                //uri: 'https://api.safaricom.co.ke/mpesa/reversal/v1/request',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/reversal/v1/request',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -295,7 +295,7 @@ let mpesa = {
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/reversal/v1/request'
+                //uri: 'https://api.safaricom.co.ke/mpesa/reversal/v1/request',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/transactionstatus/v1/query',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,
@@ -332,7 +332,7 @@ let mpesa = {
             let accessToken = response.access_token;
             let options = {
                 method: 'POST',
-                //production - uri: 'https://api.safaricom.co.ke/mpesa/accountbalance/v1/query'
+                //uri: 'https://api.safaricom.co.ke/mpesa/accountbalance/v1/query',
                 uri: 'https://sandbox.safaricom.co.ke/mpesa/accountbalance/v1/query',
                 headers: {
                     "Authorization": 'Bearer ' + accessToken,

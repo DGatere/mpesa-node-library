@@ -10,9 +10,9 @@ Before using the transaction API set the consumer key and consumer secret from <
 
 On the security function set your security credential value as specified within quotes:<br>
     
-```let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");```
+`let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");`
 
-**Note:
+_Note:_** If using on production comment sandbox URL and uncomment production URL, set to sandbox initially.
 
 **Usage**
 
