@@ -26,7 +26,7 @@ let mpesa = {
     security() {
         //sandbox value = Security Credential (Shortcode 1)
         //production value = api initiator password
-        let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL HERE");
+        let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");
         //read the sandbox/production certificate data
         // PATH - e.g "./keys/sandbox-cert.cer"
         let data = fs.readFileSync("PATH TO CERTIFICATE FILE");
