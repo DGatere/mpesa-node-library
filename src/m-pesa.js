@@ -8,8 +8,8 @@ const fs = require("fs");
 
 let mpesa = {
     O_Auth() {
-        const consumer_key = 'INSERT CONSUMER KEY HERE';
-        const consumer_secret = 'INSERT CONSUMER SECRET HERE';
+        const consumer_key = 'Z5jUd4NDfzAXbMLGlrQ3tUtK60o0U4x3';
+        const consumer_secret = 'CUtVcRYq04xfxROj';
         const auth = "Basic " + new Buffer(consumer_key + ":" + consumer_secret).toString("base64");
 
         let options = {
@@ -26,10 +26,10 @@ let mpesa = {
     security() {
         //sandbox value for security credential = Security Credential (Shortcode 1)
         //production value for security credential = api initiator password
-        let bufferToEncrypt = new Buffer("ENTER SECURITY CREDENTIAL TEXT HERE");
+        let bufferToEncrypt = new Buffer("Safaricom133!");
         //read the sandbox/production certificate data
-        // PATH - e.g "./keys/sandbox-cert.cer"
-        let data = fs.readFileSync("PATH TO CERTIFICATE FILE");
+        // PATH - e.g "../keys/sandbox-cert.cer"
+        let data = fs.readFileSync("../keys/sandbox-cert.cer");
         //convert data to string
         let privateKey = String(data);
         //encrypt the credential using the privatekey
