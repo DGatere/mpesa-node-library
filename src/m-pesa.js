@@ -3,6 +3,7 @@ const request = require('request');
 const crypto = require('crypto');
 const constants = require('constants');
 const fs = require("fs");
+const moment = require('moment');
 
 //Object mpesa used to encapsulate all M-Pesa API for easier calling of each method e.g (mpesa.B2C(<arguments>))
 
@@ -22,6 +23,11 @@ let mpesa = {
         };
         // return all the options needed for an oauth call for use in every API call
         return rp(options);
+    },
+    timestamp() {
+        //get current time and use custom format required for mpesa
+        let time = moment().format('YYYYMMDDHHmmss');
+        return time;
     },
     security() {
         //sandbox value for security credential = Security Credential (Shortcode 1)
@@ -179,13 +185,13 @@ let mpesa = {
                 });
         }).catch(error => console.log(error));
     },
-    Lipa_Na_Mpesa_Online(shortCode, timeStamp, passKey, transactionType, amount, partyA, partyB, phoneNumber, callbackUrl, accountRef, transactionDesc) {
+    Lipa_Na_Mpesa_Online(shortCode, passKey, transactionType, amount, partyA, partyB, phoneNumber, callbackUrl, accountRef, transactionDesc) {
         this.O_Auth().then(response => {
             let accessToken = response.access_token;
             const short_code = shortCode;
-            let time_stamp = timeStamp;
+            let timeStamp = this.timestamp();
             const pass_key = passKey;
-            let password = new Buffer(short_code + pass_key + time_stamp).toString("base64");
+            let password = new Buffer(short_code + pass_key + timeStamp).toString("base64");
             let options = {
                 method: 'POST',
                 //uri: 'https://api.safaricom.co.ke/mpesa/stkpush/v1/processrequest',
@@ -219,13 +225,13 @@ let mpesa = {
                 });
         }).catch(error => console.log(error));
     },
-    Lipa_Na_Mpesa_Query(shortCode, timeStamp, passKey, checkoutRequestId) {
+    Lipa_Na_Mpesa_Query(shortCode, passKey, checkoutRequestId) {
         this.O_Auth().then(response => {
             let accessToken = response.access_token;
             const short_code = shortCode;
-            let time_stamp = timeStamp;
+            let timeStamp = this.timestamp();
             const pass_key = passKey;
-            let password = new Buffer(short_code + pass_key + time_stamp).toString("base64");
+            let password = new Buffer(short_code + pass_key + timeStamp).toString("base64");
             let options = {
                 method: 'POST',
                 //uri: 'https://api.safaricom.co.ke/mpesa/stkpushquery/v1/query',
@@ -361,3 +367,5 @@ let mpesa = {
         }).catch(error => console.log(error));
     }
 };
+
+mpesa.Lipa_Na_Mpesa_Online('174379', 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919', 'CustomerPayBillOnline', '1', '254717556847', '174379', '254717556847', 'http://arbaaz.herokuapp.com/index.php', '1234', 'test');
