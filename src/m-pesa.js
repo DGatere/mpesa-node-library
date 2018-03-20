@@ -367,5 +367,3 @@ let mpesa = {
         }).catch(error => console.log(error));
     }
 };
-
-mpesa.Lipa_Na_Mpesa_Online('174379', 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919', 'CustomerPayBillOnline', '1', '254717556847', '174379', '254717556847', 'http://arbaaz.herokuapp.com/index.php', '1234', 'test');
